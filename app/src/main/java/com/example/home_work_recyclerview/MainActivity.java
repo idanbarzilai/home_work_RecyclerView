@@ -1,6 +1,8 @@
 package com.example.home_work_recyclerview;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.os.Bundle;
 
@@ -36,10 +38,16 @@ public class MainActivity extends AppCompatActivity {
 
     ArrayList<CardModel> models = new ArrayList<>();;
 
+    CardAdapter adapter;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        setUpModel();
+        adapter = new CardAdapter(this, models);
+        RecyclerView recyclerView = findViewById(R.id.reView);
+        recyclerView.setAdapter(adapter);
+        recyclerView.setLayoutManager(new LinearLayoutManager(this));
     }
 
     private void setUpModel(){
